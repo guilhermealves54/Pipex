@@ -6,7 +6,7 @@
 #    By: gribeiro <gribeiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 19:38:58 by gribeiro          #+#    #+#              #
-#    Updated: 2025/02/13 21:10:46 by gribeiro         ###   ########.fr        #
+#    Updated: 2025/02/25 13:35:54 by gribeiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,8 @@ fclean: clean
 re: fclean all
 
 test: all
-	@touch infile
 	@touch outfile
-	./pipex infile "ls -l" "wc -l" outfile
+	./pipex infile "ls" "wc" outfile
 
 valgrind: all
 	valgrind ./pipex

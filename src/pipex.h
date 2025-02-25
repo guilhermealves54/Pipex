@@ -6,7 +6,7 @@
 /*   By: gribeiro <gribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:39:02 by gribeiro          #+#    #+#             */
-/*   Updated: 2025/02/13 21:05:49 by gribeiro         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:56:58 by gribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include<unistd.h>
 # include<stdlib.h>
 # include<fcntl.h>
+# include<sys/wait.h>
 # include<stdio.h>  // APAGAR
 
 #endif
