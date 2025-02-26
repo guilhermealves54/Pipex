@@ -6,7 +6,7 @@
 #    By: gribeiro <gribeiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 19:38:58 by gribeiro          #+#    #+#              #
-#    Updated: 2025/02/25 13:35:54 by gribeiro         ###   ########.fr        #
+#    Updated: 2025/02/26 02:16:28 by gribeiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ re: fclean all
 
 test: all
 	@touch outfile
-	./pipex infile "ls" "wc" outfile
+	./pipex infile "ls -l" "wc -l" outfile
 
 valgrind: all
-	valgrind ./pipex
+	valgrind --leak-check=full --track-origins=yes ./pipex infile "ls -l" "wc -l" outfile
