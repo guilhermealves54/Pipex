@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gribeiro <gribeiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gribeiro <gribeiro@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:39:06 by gribeiro          #+#    #+#             */
-/*   Updated: 2025/03/10 01:54:25 by gribeiro         ###   ########.fr       */
+/*   Updated: 2025/03/16 01:49:11 by gribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,19 @@ static void	fill_strc(t_pipex *px, char **envp, char **argv)
 	px->cmd_b = ft_split (argv[3], ' ');
 	px->path_a = findpath (envp, px->cmd_a);
 	px->path_b = findpath (envp, px->cmd_b);
+	px->argv = argv;
 }
 
 static int	fork_proc(t_pipex *px, char **envp)
 {
 	px->pid1 = fork ();
 	if (px->pid1 < 0)
-		return (perror ("Error creating a new process.\n"), 1);
+		return (perror ("Error: "), 1);
 	if (px->pid1 == 0)
 		child1 (px, envp);
 	px->pid2 = fork ();
 	if (px->pid2 < 0)
-		return (perror ("Error creating a new process.\n"), 1);
+		return (perror ("Error: "), 1);
 	if (px->pid2 == 0)
 		child2 (px, envp);
 	return (0);
@@ -71,13 +72,16 @@ static int	child1(t_pipex *px, char **envp)
 {
 	if (px->infile == -1)
 	{
-		perror("pipex: warning: cannot open infile.\n");
+		ft_putstr_fd (px->argv[1], 2);
+		perror(": ");
 		closefds (px, 4, NULL);
 		free_mem (px);
 		exit(1);
 	}
 	if (!px->cmd_a || !px->path_a)
 	{
+		ft_putstr_fd (px->cmd_a, 2);
+		perror (": ");
 		closefds (px, 4, NULL);
 		free_mem (px);
 		exit (127);
@@ -94,13 +98,16 @@ static int	child2(t_pipex *px, char **envp)
 {
 	if (px->outfile < 0)
 	{
-		perror("Pipex: Outfile error.\n");
+		ft_putstr_fd (px->argv[4], 2);
+		perror(": ");
 		closefds (px, 4, NULL);
 		free_mem (px);
 		exit(1);
 	}
 	if (!px->cmd_b || !px->path_b)
 	{
+		ft_putstr_fd (px->cmd_b, 2);
+		perror (": ");
 		closefds (px, 4, NULL);
 		free_mem (px);
 		exit (127);
