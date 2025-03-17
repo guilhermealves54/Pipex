@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gribeiro <gribeiro@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gribeiro <gribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:39:06 by gribeiro          #+#    #+#             */
-/*   Updated: 2025/03/16 01:49:11 by gribeiro         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:04:26 by gribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,16 @@ static int	child1(t_pipex *px, char **envp)
 	if (px->infile == -1)
 	{
 		ft_putstr_fd (px->argv[1], 2);
-		perror(": ");
+		perror(" ");
 		closefds (px, 4, NULL);
 		free_mem (px);
 		exit(1);
 	}
 	if (!px->cmd_a || !px->path_a)
 	{
-		ft_putstr_fd (px->cmd_a, 2);
-		perror (": ");
+		ft_putstr_fd ("Command not found: ", 2);
+		ft_putstr_fd (px->cmd_a[0], 2);
+		ft_putstr_fd ("\n", 2);
 		closefds (px, 4, NULL);
 		free_mem (px);
 		exit (127);
@@ -106,8 +107,9 @@ static int	child2(t_pipex *px, char **envp)
 	}
 	if (!px->cmd_b || !px->path_b)
 	{
-		ft_putstr_fd (px->cmd_b, 2);
-		perror (": ");
+		ft_putstr_fd ("Command not found: ", 2);
+		ft_putstr_fd (px->cmd_b[0], 2);
+		ft_putstr_fd ("\n", 2);
 		closefds (px, 4, NULL);
 		free_mem (px);
 		exit (127);

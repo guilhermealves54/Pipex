@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gribeiro <gribeiro@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gribeiro <gribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:39:02 by gribeiro          #+#    #+#             */
-/*   Updated: 2025/03/16 01:48:54 by gribeiro         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:32:46 by gribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_pipex
 	char	*path_b;
 	char	**cmd_a;
 	char	**cmd_b;
-	char	*argv;
+	char	**argv;
 }	t_pipex;
 
 // Libft functions
