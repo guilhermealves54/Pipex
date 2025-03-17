@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gribeiro <gribeiro@student.42porto.com>    +#+  +:+       +#+         #
+#    By: gribeiro <gribeiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/13 19:38:58 by gribeiro          #+#    #+#              #
-#    Updated: 2025/03/15 23:16:59 by gribeiro         ###   ########.fr        #
+#    Updated: 2025/03/17 17:21:11 by gribeiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,4 +57,4 @@ test: all
 
 valgrind: all
 	@touch infile
-	@valgrind --leak-check=full --track-origins=yes ./pipex infile "ls -l" "wc -l" outfile
+	@valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes -s -q ./pipex infile "cat" "wc -l" outfile

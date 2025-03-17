@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gribeiro <gribeiro@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gribeiro <gribeiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 16:43:14 by gribeiro          #+#    #+#             */
-/*   Updated: 2025/03/15 23:20:19 by gribeiro         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:56:15 by gribeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	**extractpaths(char **envp)
 			break ;
 		i++;
 	}
-	if (!envp)
+	if (!envp[i])
 		return (NULL);
 	path_line = ft_strdup (envp[i] + 5);
 	if (!path_line)
