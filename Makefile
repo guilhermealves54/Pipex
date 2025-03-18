@@ -45,6 +45,9 @@ fclean: clean
 
 re: fclean all
 
+func: all
+	nm ./pipex | grep "U" | grep -v "__"
+
 test: all
 	@if [ ! -d pipex-tester ]; then \
 		git clone https://github.com/vfurmane/pipex-tester; \
